@@ -110,5 +110,5 @@ salespeople = Salesperson.all
 for salesperson in salespeople
     activities = Activity.where({"salesperson_id" => salesperson["id"]})
     number_of_activities = activities.count
-    puts "#{number_of_activities} activities"
+    puts "#{salesperson["first_name"]} #{salesperson["last_name"]}: #{number_of_activities} activities"
 end
