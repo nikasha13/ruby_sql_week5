@@ -65,13 +65,40 @@ end
 # Tim Cook - met at Cupertino
 # Jeff Bezos - met at Blue Origin HQ
 
-# 3a. Can you include the contact's company?
+puts "Priti's Activities:"
+activities = Activity.where({
+    "salesperson_id" => priti["id"]
+})
 
+for activity in activities
+    contact = Contact.find_by({"id" => activity["contact_id"]})
+    contact_first = contact["first_name"]
+    contact_last = contact["last_name"]
+    note = activity["note"]
+    puts "#{contact_first} #{contact_last} - #{note}"
+end
+
+# 3a. Can you include the contact's company?
 # ---------------------------------
 # Ben's Activities:
 # Tim Cook (Apple) - quick checkin over facetime
 # Tim Cook (Apple) - met at Cupertino
 # Jeff Bezos (Amazon) - met at Blue Origin HQ
+
+puts "Priti's Activities:"
+activities = Activity.where({
+    "salesperson_id" => priti["id"]
+})
+
+for activity in activities
+    contact = Contact.find_by({"id" => activity["contact_id"]})
+    contact_first = contact["first_name"]
+    contact_last = contact["last_name"]
+    company = Company.find_by({"id" => contact["company_id"]})
+    company_name = company["name"]
+    note = activity["note"]
+    puts "#{contact_first} #{contact_last} (#{company_name}) - #{note}"
+end
 
 # CHALLENGE:
 # 4. How many activities does each salesperson have?
@@ -79,3 +106,9 @@ end
 # ---------------------------------
 # Ben Block: 3 activities
 # Brian Eng: 0 activities
+salespeople = Salesperson.all
+for salesperson in salespeople
+    activities = Activity.where({"salesperson_id" => salesperson["id"]})
+    number_of_activities = activities.count
+    puts "#{number_of_activities} activities"
+end
