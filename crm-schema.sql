@@ -1,3 +1,4 @@
+
 CREATE TABLE salespeople (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   first_name TEXT,
